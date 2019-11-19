@@ -22,7 +22,7 @@ function ParentSignUpForm (props) {
     const parentSignUp = e => {
         e.preventDefault();
         Axios
-        .get(`https://disneyparentdb.herokuapp.com/api/auth/register`, {...credentials, type: "parent"})
+        .post(`https://disneyparentdb.herokuapp.com/api/auth/register`, {...credentials, type: "parent"})
         .then(res => {
             console.log(res.data)
 
