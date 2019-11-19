@@ -25,7 +25,7 @@ function VolunteerSignUpForm(props) {
     const volunteerSignUp = e => {
         e.preventDefault();
         axios
-        .get()
+        .post('https://disneyparentdb.herokuapp.com/api/auth/register', {...credentials, type: "volunteer"})
         .then(res => {
             console.log(res.data)
 
