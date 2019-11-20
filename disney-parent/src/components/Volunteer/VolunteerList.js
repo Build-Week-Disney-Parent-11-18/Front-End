@@ -4,7 +4,7 @@ import axios from 'axios';
 const VolunteerList = () => {
     const viewVolunteer = id => {
         axios
-        .get()
+        .get('https://disneyparentdb.herokuapp.com/api/users' + id)
         .then(res => {
             console.log("EDIT", res.data);
             props({
@@ -29,7 +29,6 @@ const VolunteerList = () => {
                      <p>Volunteer Email: {v.email}</p>
                      <p>Volunteer Phone Number: {v.phoneNum}</p>
                      <p>Volunteer Average Cost: {v.avgPerChild}</p>
-                     <p>Volunteer CPR Certified: {v.CPR_Certified}</p>
                     </div>
 
                 )
