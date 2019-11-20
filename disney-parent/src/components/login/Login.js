@@ -11,12 +11,14 @@ const Login = props => {
     axios
       .post("https://disneyparentdb.herokuapp.com/api/auth/login", login)
       .then(res => {
-        console.log("response", res.data);
+        console.log("response", res.data.loggedInUser_id);
         const { data } = res;
 
         localStorage.setItem("token", data.token);
+        localStorage.setItem("loggedInUser_id", data.loggedInUser_id);
         props.history.push('/');
         window.location.reload(true);
+        console.log("response",localStorage)
       })
       .catch(err => console.log(err));
   };

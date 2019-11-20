@@ -4,6 +4,9 @@ import { Link, Route, Switch } from "react-router-dom";
 import Login from "./components/login/Login";
 import RequestCard from "./components/request/RequestCard";
 import PrivateRoute from "./components/PrivateRoute";
+import ParentSignUpForm from './components/signUp/ParentSignUpForm';
+import VolunteerSignUpForm from './components/signUp/VolunteerSignUpForm';
+import NewRequest from './components/request/NewRequest';
 
 import "./App.css";
 
@@ -37,7 +40,7 @@ function App(props) {
   return (
     <div className="App">
       <header className="App-header">
-        <ul style={{ listStyle: "none", display: "flex" }}>
+        <ul id='nav' style={{ listStyle: "none", display: "flex" }}>
           <li>
             <Link
               style={{ textDecoration: "none", color: "whitesmoke" }}
@@ -46,9 +49,10 @@ function App(props) {
               Home
             </Link>
           </li>
+          <li><Link to='/NewRequest'>Request</Link></li>
           <li>
             <input
-              style={{ marginLeft: "2rem" }}
+              style={{ marginLeft: "2rem", marginTop: '0.5rem' }}
               onChange={handleChange}
               value={search.term}
               type="text"
@@ -73,14 +77,24 @@ function App(props) {
               {status}
             </Link>
           </li>
+          <li>
+            <Link>Sign Up</Link>
+            <ul>
+              <li><Link to='/ParentSignUp'>Parent</Link></li>
+              <li><Link to='/VolunteerSignUp'>Volunteer</Link></li>
+            </ul>
+          </li>
         </ul>
       </header>
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/Login" component={Login} />
+        <Route path="/ParentSignUp" component={ParentSignUpForm} />
+        <Route path="/VolunteerSignUp" component={VolunteerSignUpForm} />
         <PrivateRoute exact path="/Request/:id">
           <RequestCard />
         </PrivateRoute>
+        <PrivateRoute path='/NewRequest'><NewRequest/></PrivateRoute>
       </Switch>
     </div>
   );

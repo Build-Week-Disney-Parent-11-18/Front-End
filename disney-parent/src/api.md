@@ -8,6 +8,7 @@ Login (POST): /api/auth/login
 USERS
 Get all users (GET): /api/users
 
+
 REQUESTS
 Get all requests (GET): /api/requests
 Get specific request by request id (GET): /api/requests/:request_id
@@ -19,6 +20,8 @@ COMMENTS
 Get all comments (GET): /api/comments
 Get all comments made by user by user id (GET): /api/users/:user_id/comments
 Get all comments on specific request by request id (GET): /api/requests/request:_id/comments
+https://disneyparentdb.herokuapp.com/api/requests/request:_id/comments
+
 Get specific comment by comment id (GET): /api/comments/:comment_id
 
 Post new comment (POST): /api/users/:user_id/requests/:request_id/comments
