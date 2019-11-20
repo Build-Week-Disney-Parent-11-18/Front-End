@@ -1,22 +1,24 @@
 import React, { useState, useEffect } from "react";
 import Home from "./components/home/Home";
-import { Link, Route } from "react-router-dom";
+import { Link, Route, Switch } from "react-router-dom";
 import Login from "./components/login/Login";
-//import PrivateRoute from './components/PrivateRoute';
+import RequestCard from "./components/request/RequestCard";
+import PrivateRoute from "./components/PrivateRoute";
 
 import "./App.css";
 
 function App(props) {
   const [status, setStatus] = useState("Login");
-  useEffect(()=>{
-    if(localStorage.length !== 0){
-      setStatus('Logout')
+  const [search, setSearch] = useState({ term: "" });
+  useEffect(() => {
+    if (localStorage.length !== 0) {
+      setStatus("Logout");
     }
   });
-  console.log('local',localStorage)
+  console.log("local", localStorage);
 
   const handleClick = () => {
-    if (status === "Logout"){
+    if (status === "Logout") {
       localStorage.clear();
       setStatus("Login");
       window.location.href = "/";
@@ -25,7 +27,7 @@ function App(props) {
 
   const handleChange = e => {
     e.preventDefault();
-    //logic here
+    setSearch({ ...search, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = e => {
@@ -48,8 +50,9 @@ function App(props) {
             <input
               style={{ marginLeft: "2rem" }}
               onChange={handleChange}
+              value={search.term}
               type="text"
-              name="search"
+              name="term"
               placeholder="Search"
             />
             <button style={{ marginLeft: "1rem" }} onSubmit={handleSubmit}>
@@ -72,12 +75,13 @@ function App(props) {
           </li>
         </ul>
       </header>
-
-      <Route exact path="/" component={Home} />
-      <Route path="/Login" component={Login} />
-      {/* <PrivateRoute path=''>
-
-      </PrivateRoute> */}
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route path="/Login" component={Login} />
+        <PrivateRoute exact path="/Request/:id">
+          <RequestCard />
+        </PrivateRoute>
+      </Switch>
     </div>
   );
 }

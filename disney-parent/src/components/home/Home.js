@@ -1,20 +1,17 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { getRequest } from "../../actions";
+import {Link} from 'react-router-dom';
 
 const Home = props => {
   const {getRequest} = props;
-  console.log('before',props)
+  //console.log('before',props)
   useEffect(() => { 
     getRequest();
   },[]);
 
   if (props.isGetting) return <h2>Loading</h2>;
 
-  const handleClick = e => {
-    //e.prevetDefault();
-    // isLoggedIn ? props.history.push('') : props.history.push('/login')
-  };
   return (
     <>
       {props.error && <p>{props.error}</p>}
@@ -31,13 +28,14 @@ const Home = props => {
               <h4>Place: {req.meeting_place}</h4>
               <p>Time: {req.meeting_time} | # of Kids: {req.number_of_kids}</p>
               <p style={{ marginBottom: "2rem" }}>Created: {req.created_at} | Updated: {req.updated_at}</p>
-              <button style={{
+              <Link to={`/Request/${req.request_id}`} ><button style={{
                 backgroundColor: 'blue',
                 color: 'whitesmoke',
                 padding: '0.8rem',
                 borderRadius: '1rem',
                 marginBottom: '1rem'
-                }} onClick={handleClick}>View</button>
+                }} 
+                >View</button></Link>
             </div>);
           }):console.log('state',props)}
     </>
