@@ -54,18 +54,11 @@ table {
 
 html, body {
     height: 100%;
-    font-family: 'Poppins', sans-serif;
-    background: rgb(9, 9, 75);
-    background: url("https://cdn1.parksmedia.wdprapps.disney.com/media/blog/wp-content/uploads/2019/05/ksjfhury85ui11-624x352.jpg") no-repeat center center fixed; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-
+    font-family: 'Titillium Web', sans-serif;
 }
 
 h1, h2, h3, h4, h5 {
-    font-family: 'Pacifico', cursive;
+    font-family: 'Bangers', cursive;
     letter-spacing: 1px;
     margin-bottom: 15px;
 }
@@ -80,16 +73,8 @@ h1, h2, h3, h4, h5 {
     max-width: 880px;
 	margin: auto;
     justify-content: center;
-    background: #ffffff73;
-    padding-left: 15px;
-    padding-right: 15px;
-    min-height: 100%;
-    box-shadow: 0px 10px 160px black;
-}
+    background: rgb(9, 9, 75);
 
-#headerImage {
-    border-radius: 50%;
-    box-shadow: 0px 0px 40px black;
 }
 
 /*  NAVIGATION */
@@ -108,7 +93,7 @@ h1, h2, h3, h4, h5 {
 }
 
 .navLink {
-	color: #030a16;
+	color: white;
 	font-size: 14px;
     text-decoration: none;
     margin-right: 60px;
@@ -116,12 +101,11 @@ h1, h2, h3, h4, h5 {
 
 #bannerSection {
 	height: 480px;
-	border-bottom: 1px solid #030a16;
+	border-bottom: 1px solid white;
 	margin: 0px 0px 30px 0px;
 	display: flex;
 	justify-content: space-between;
-    align-items: center;
-    
+	align-items: center;
 }
 
 #taglineBox {
@@ -136,24 +120,22 @@ h1, h2, h3, h4, h5 {
 
 #tagline {
     font-size: 60px;
-    color: #030a16;
+    color: white;
 }
 
 #signUp {
-	height: 60px;
-    width: 60px;
-    color: #042f74;
+	height: 20px;
+	width: 150px;
+	color: #042f74;
 	font-size: 16x;
-	border: 1px solid darkslategray;
-	padding: 10.7px;
+	border: 1px solid white;
+	padding: 2px;
 	text-decoration: none;
-	background-color:darkslategray;
+	background-color: rgb(206, 211, 218);
     animation-name: example;
-	animation-duration: 1s;
+	animation-duration: 2s;
 	animation-iteration-count: infinite;
-    animation-direction: alternate;
-    border-radius: 50%;
-    box-shadow: 5px 5px 35px black;
+	animation-direction: alternate;
 }
 
 #upperSection {
@@ -164,23 +146,23 @@ h1, h2, h3, h4, h5 {
 }
 
 #features {
-    width: 425px;
-    color: #030a16;
+    width: 440px;
+    color: white;
 }
 
 #about {
-    width: 425px;
-    color: #030a16;
+    width: 440px;
+    color: white;
 }
-/* 
+
 #lowerSection {
 	display: flex;
 	flex-flow: row nowrap;
-	align-items: right;
+	align-items: center;
 	margin: 30px 0px 30px 0px;
-} */
+}
 
-/* #services {
+#services {
 	width: 290px;
 }
 
@@ -190,40 +172,21 @@ h1, h2, h3, h4, h5 {
 
 #vision {
 	width: 290px;
-} */
+}
 
 #address {
-    justify-content: center;
-    align-items: baseline;
-	border-top: 1px solid#030a16;
+	border-top: 1px solidwhite;
 	width: 880px;
     padding: 40px 0px 0px 0px;
-    color:#030a16;
-}
-.bottomEars {
-    position: static;
-    top: 35vh;
-    height: 20vh;
-    width: 50%;
-    animation: linearwipe 4s steps(60, end); 
+    color:white;
 }
 
-@keyframes linearwipe{ 
-  from { width: 0; } 
-}
-
-.bottomEars img {
-    height: 100%;
-}
-
-/* #footer {
+#footer {
 	text-align: center;
 	margin: 28px 0px;
     font-size: 14px;
-    color: #030a16;
-} */
-
-
+    color: white;
+}
 
 /* Hi GUYS!  These are the media queries. */
 /* Tablet */
@@ -267,9 +230,9 @@ h1, h2, h3, h4, h5 {
     #getStarted {
         height: 35px;
         width: 170px;
-        color: #030a16;
+        color: #4287f5;
         font-size: 16px;
-        border: 1px solid #030a16;
+        border: 1px solid #4287f5;
         padding-top: 7px;
         text-decoration: none;
     }
@@ -277,7 +240,7 @@ h1, h2, h3, h4, h5 {
     #upperSection {
     	justify-content: space-between;
         width: 755px;
-        border-top: 2px solid #030a16;
+        border-top: 2px solid white;
         margin: 0px 0px 40px 20px;
         padding: 30px 0px 0px 10px;
     }
@@ -290,19 +253,19 @@ h1, h2, h3, h4, h5 {
         width: 360px;
     }
 
-    /* .middle-img {
+    .middle-img {
         width: 755px;
         margin-left: 20px;
-    } */
+    }
 
-    /* #lowerSection {
+    #lowerSection {
         justify-content: space-between;
         width: 755px;
         margin: 0px 0px 60px 20px;
         padding: 30px 0px 0px 10px;
-    } */
+    }
 
-    /* #services {
+    #services {
         width: 210px;
     }
 
@@ -312,10 +275,10 @@ h1, h2, h3, h4, h5 {
 
     #vision {
         width: 210px;
-    } */
+    }
 
     #address {
-        border-top: 2px solid #030a16;
+        border-top: 2px solid white;
         margin-left: 20px;
         width: 755px;
         padding: 30px 0px 0px 5px;
@@ -354,7 +317,7 @@ h1, h2, h3, h4, h5 {
         margin-bottom: 0px;
         padding: 22px 0px;
         width: 500px;
-        border-top: 1px solid #030a16;
+        border-top: 1px solid white;
     }
 
     #bannerSection {
@@ -364,7 +327,7 @@ h1, h2, h3, h4, h5 {
     }
 
     #tagline {
-        border-top: 1px solid #030a16;
+        border-top: 1px solid white;
         width: 500px;
         margin-top: 25px;
         padding-top: 40px;
@@ -401,7 +364,7 @@ h1, h2, h3, h4, h5 {
         margin-bottom: 20px;
     }
 
-    /* #services {
+    #services {
         width: 460px;
         margin: 25px 0px;
     }
@@ -414,7 +377,7 @@ h1, h2, h3, h4, h5 {
     #vision {
         width: 460px;
         margin: 25px 0px;
-    } */
+    }
 
     #address {
         width: 460px;
