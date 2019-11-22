@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axiosWithAuth from "../login/Auth";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams, useHistory, Link } from "react-router-dom";
 import CommentSection from '../comments/CommentSection';
 
 
@@ -28,11 +28,12 @@ const RequestCard = (props) => {
 
   useEffect(() => {
     //window.location.reload(true);
+    //console.log('getId', id)
     axiosWithAuth()
       .get(`/requests/${id}`)
       .then(res => {
         const { data } = res;
-        console.log("reqID", data);
+        //console.log("reqID", data);
 
         setReq({
           created: data.created_at,
@@ -45,14 +46,14 @@ const RequestCard = (props) => {
           user_id: data.user_id
         });
         
-      },[])
+      })
       .catch(err => console.log(err));
       // axiosWithAuth()
       // .get(`/requests/${id}/comments`)
       // .then(res =>{
       //   console.log('num comments',res.data.comment) 
       // })
-  });
+  },[]);
   const home = useHistory();
 
   const deleteRequest = (e) =>{
@@ -86,12 +87,12 @@ const RequestCard = (props) => {
         Created: {req.created}| Updated: {req.update}
       </p>
       <ul style={{ display: "flex", listStyle: "none", justifyContent:'space-evenly' }}>
-        <li>Comments:</li>
-        <li>Comment</li>
+        <li>Comments: </li>
+        <li><Link to='/Comment' onClick={()=> localStorage.setItem('id',id)}>Comment</Link></li>
         <li><button onClick={deleteRequest}>Delete Request</button></li>
       </ul>
       <div >
-        <CommentSection id={id}/>
+        {id ? <CommentSection id={id}/> : 'Loading....'}
       </div>
     </div>
 

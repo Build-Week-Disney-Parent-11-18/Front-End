@@ -4,21 +4,22 @@ import { Link, Route, Switch } from "react-router-dom";
 import Login from "./components/login/Login";
 import RequestCard from "./components/request/RequestCard";
 import PrivateRoute from "./components/PrivateRoute";
-import ParentSignUpForm from './components/signUp/ParentSignUpForm';
-import VolunteerSignUpForm from './components/signUp/VolunteerSignUpForm';
-import NewRequest from './components/request/NewRequest';
+import ParentSignUpForm from "./components/signUp/ParentSignUpForm";
+import VolunteerSignUpForm from "./components/signUp/VolunteerSignUpForm";
+import NewRequest from "./components/request/NewRequest";
+import CommentForm from "./components/comments/CommentForm";
 
 import "./App.css";
 
 function App(props) {
   const [status, setStatus] = useState("Login");
-  const [search, setSearch] = useState({ term: "" });
+  const [search, setSearch] = useState("");
   useEffect(() => {
     if (localStorage.length !== 0) {
       setStatus("Logout");
     }
   });
-  console.log("local", localStorage);
+  //console.log("local", localStorage);
 
   const handleClick = () => {
     if (status === "Logout") {
@@ -33,35 +34,43 @@ function App(props) {
     setSearch({ ...search, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    //logic here
-  };
   return (
     <div className="App">
       <header className="App-header">
-        <ul id='nav' style={{ listStyle: "none", display: "flex" }}>
+        <ul id="nav" style={{ listStyle: "none", display: "flex" }}>
           <li>
             <Link
               style={{ textDecoration: "none", color: "whitesmoke" }}
-              to="/"
+              to={{
+                pathname: "/",
+                state: ''
+              }}
             >
               Home
             </Link>
           </li>
-          <li><Link to='/NewRequest'>Request</Link></li>
           <li>
+            <Link to="/NewRequest">Request</Link>
+          </li>
+
+          <li>
+            {/* Search bar */}
             <input
-              style={{ marginLeft: "2rem", marginTop: '0.5rem' }}
+              style={{ marginLeft: "2rem", marginTop: "0.5rem" }}
               onChange={handleChange}
               value={search.term}
               type="text"
               name="term"
               placeholder="Search"
             />
-            <button style={{ marginLeft: "1rem" }} onSubmit={handleSubmit}>
+            <Link
+              to={{
+                pathname: "/",
+                state: search
+              }} 
+            >
               Search
-            </button>
+            </Link>
           </li>
           <li>
             {" "}
@@ -80,8 +89,12 @@ function App(props) {
           <li>
             <Link>Sign Up</Link>
             <ul>
-              <li><Link to='/ParentSignUp'>Parent</Link></li>
-              <li><Link to='/VolunteerSignUp'>Volunteer</Link></li>
+              <li>
+                <Link to="/ParentSignUp">Parent</Link>
+              </li>
+              <li>
+                <Link to="/VolunteerSignUp">Volunteer</Link>
+              </li>
             </ul>
           </li>
         </ul>
@@ -94,7 +107,12 @@ function App(props) {
         <PrivateRoute exact path="/Request/:id">
           <RequestCard />
         </PrivateRoute>
-        <PrivateRoute path='/NewRequest'><NewRequest/></PrivateRoute>
+        <PrivateRoute path="/NewRequest">
+          <NewRequest />
+        </PrivateRoute>
+        <PrivateRoute path="/Comment">
+          <CommentForm />
+        </PrivateRoute>
       </Switch>
     </div>
   );

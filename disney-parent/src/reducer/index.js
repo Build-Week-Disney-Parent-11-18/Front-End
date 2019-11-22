@@ -10,6 +10,7 @@ import {
 const initState = {
   request: [],
   isGetting: false,
+  isPosting: false,
   error: ""
 };
 
@@ -24,6 +25,7 @@ const reducer = (state = initState, { type, payload }) => {
     case GET_COMMENTS_START:
       return { ...state, isGetting: true, error: "" };
     case GET_COMMENTS_SUCCESS:
+        console.log('reducer', payload)
       return { ...state, request: payload, isGetting: false, error: "" };
     case GET_COMMENTS_FAILURE:
       return { ...state, isGetting: false, error: payload };

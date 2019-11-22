@@ -26,6 +26,7 @@ export const getComments = (id) => dispatch =>{
   axios
     .get(`https://disneyparentdb.herokuapp.com/api/requests/${id}/comments`)
     .then(res =>{
+        console.log('action', res.data);
         dispatch({type: GET_COMMENTS_SUCCESS, payload: res.data})
     })
     .catch(err =>{

@@ -5,20 +5,16 @@ import { connect } from "react-redux";
 import { getComments } from "../../actions";
 
 const CommentSection = props => {
-  const [commentList, setCommentList] = useState([{
-      comment: "",
-      comment_id: 0,
-      created_at: "",
-      request_id: 1,
-      updated_at: "",
-      user_id: 0
-    }]);
-
+  const [test, setTest] = useState([]);
   useEffect(() => {
-    console.log("in useefect");
-    getComments(props.id);
-        console.log('getcomments',)
-      
+    console.log('GetId',props.id)
+    axiosWithAuth()
+      .get(`/requests/${props.id}/comments`)
+      .then(res => {
+        console.log("numofcomments", res);
+        setTest(...test, res.data);
+      });
+    // props.getComments(props.id);
   }, []);
   const editComment = () => {
     axios
@@ -35,31 +31,43 @@ const CommentSection = props => {
     props.setEditCom(true);
   };
 
-  const deleteCom = () => {
-    // console.log("ID", id);
-    axios()
-      .delete(
-        `https://disneyparentdb.herokuapp.com/api/users/:userid/requests/:requestid/comments`
-      )
+  const deleteCom = (e) => {
+    console.log("ID", e);
+    axiosWithAuth()
+      .delete(`/comments/${e}`)
       .then(res => {
         console.log("ADD", res.data);
-        props.setNewGetCom(true);
+        //props.setNewGetCom(true);
       })
       .catch(err => console.log(err));
   };
-
-  return (
-    <div>
-       {props.request ?
-          props.request.map(res => {
-            return(
-              <div key = {res.id}>
-                <p>{res.comment}</p>
-              </div>
-            );
-          }): null}
-    </div>
-  );
+  console.log("getcomments", test.length);
+  if (test.length !== 0) {
+    return (
+      // <div>
+      // <p>
+      //   From User: {test.user_id}| {test.comment} | Time: {test.updated_at}{" "}
+      //   <button onClick={deleteCom}>delete</button>
+      // </p>
+      // </div>
+      <div>
+        {test
+          ? test.map(res => {
+              return (
+                <div key={res.id}>
+                  <p>
+                    From User: {res.user_id}| {res.comment} | Time:{" "}
+                    {res.updated_at} <button onClick={()=>deleteCom(res.comment_id)}>delete</button>
+                  </p>
+                </div>
+              );
+            })
+          : null}
+      </div>
+    );
+  } else {
+    return null;
+  }
 };
 
 const mapStateToProps = state => {

@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 const NewRequest = props => {
   const home = useHistory();
   const [newReq, setNewReq] = useState({
-    user_id: localStorage.loggedInUser_id,
+    user_id: localStorage.getItem('loggedInUser_id'),
     meeting_place: "",
     meeting_time: "",
     number_of_kids: 0,
