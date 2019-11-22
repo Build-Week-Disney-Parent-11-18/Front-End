@@ -5,11 +5,10 @@ import { Link } from "react-router-dom";
 
 const Home = props => {
   const { getRequest } = props;
-  let searchTerm = props.location.state.term;
-  //console.log('term1',searchTerm)
-  let place = props.request.filter(
-    filter => filter.meeting_place === searchTerm
-  );
+  let searchTerm = '';
+  useEffect(() => {
+    getRequest();
+  }, []);
   const fullList = () => {
     return (
       <>
@@ -55,6 +54,17 @@ const Home = props => {
       </>
     );
   };
+  try {
+    searchTerm = props.location.state.term;
+  } catch (error) {
+    return fullList();
+  }
+ 
+  //console.log('term1',searchTerm)
+  let place = props.request.filter(
+    filter => filter.meeting_place === searchTerm
+  );
+  
 
   const foundSearch = () => {
     return (
@@ -100,9 +110,7 @@ const Home = props => {
       </>
     );
   };
-  useEffect(() => {
-    getRequest();
-  }, []);
+ 
 
   if (props.isGetting) return <h2>Loading</h2>;
 
