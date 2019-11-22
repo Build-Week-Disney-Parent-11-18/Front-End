@@ -5,7 +5,7 @@ const ParentList = () => {
  
   const viewParent = id => {
     axios()
-      .get("/users/parents" + id)
+      .get("https://disneyparentdb.herokuapp.com/api/users/users/parents" + id)
       .then(res => {
         console.log("EDIT", res.data);
         props({
