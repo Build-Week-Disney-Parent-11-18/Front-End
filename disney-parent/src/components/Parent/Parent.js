@@ -40,7 +40,7 @@ const Parent = (props) => {
 
     const handleChanges = event => {
         setCredentials({
-            ...credentials, [event.target.name]: event.target.value
+            ...credentials, [event.target,name]: event.target.value
         });
     }
 
@@ -110,8 +110,5 @@ const Parent = (props) => {
     ) 
 
 }
-
-
-
 
 export default Parent;
